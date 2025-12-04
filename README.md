@@ -1,35 +1,129 @@
-# Quantum Data Engine v1.0
+📦 Quantum Data Engine — Python Simulation Framework
 
-Eksperimentalni Python engine koji kombinuje **kvantno-inspirirane simulacije**, **graf strukture**, **pretragu podataka**, **storage mehanizme** i **vizualizaciju** u jedinstven projekt.
+Quantum Data Engine je edukativni i eksperimentalni Python projekt koji simulira:
 
-Projekt je razvijen kao napredna vježba iz OOP-a, graf teorije, algoritama, data-engine arhitekture i simulacije kvantnih fenomena.
+kvantne čvorove (amplituda, energija, superpozicija)
 
----
+graf koji povezuje čvorove (entanglement, decoherence)
 
-## 🚀 Features
+pretraživački engine (amplitude, energija, kombinirani filteri)
 
-### 🔮 Quantum Model
-- Amplitude & energija
-- Decoherence (raspad amplituda)
-- Superpozicija i collapse
-- Simulirano kvantno sprezanje (entanglement)
-- Stabilizator sistema (balansiranje amplituda)
+mehanizam spregnutosti (kvantna korelacija)
 
-### 🕸 Graph Engine
-- Nodo (QuantumNode) sa energijom i amplitudom  
-- Dvosmjerne veze i pretraga po parametrima  
-- Kombinirani upiti  
-- Rangiranje čvorova po amplitude+energija metriki
+vizualni prikaz grafa (NetworkX + matplotlib)
 
-### 💾 Storage Engine
-- Snapshot JSON čuvanje stanja  
-- Write-Ahead Log (WAL) — kao u pravim bazama  
-- Shadow copy sistem  
-- Hashing integriteta (SHA-256)
+animirani prikaz oscilacije amplitude
 
-### 🎨 Vizualizacija
-- Statični prikaz grafa  
-- Animirana oscilacija amplituda  
-- Prikaz u boji (plasma colormap)
+jednostavan storage layer (hashing, snapshot, WAL log)
 
+Projekt je zamišljen kao mini–kvantna simulacija + mini–baza podataka, u čistom Pythonu, pogodna za učenje struktura podataka, algoritama i OOP arhitekture.
 
+🚀 Pokretanje
+1. Kreiraj virtual environment
+python -m venv venv
+
+2. Aktiviraj ga
+
+Windows PowerShell:
+
+.\venv\Scripts\activate
+
+3. Instaliraj dependency-je
+pip install -r requirements.txt
+
+4. Pokreni engine
+python main.py
+
+🧠 Funkcionalnosti
+✔️ Quantum čvorovi
+
+amplitude
+
+energija
+
+veze (linkovi)
+
+superpozicija
+
+kolaps
+
+✔️ Quantum Graph
+
+spajanje čvorova
+
+odstranjivanje “mrtvih” čvorova
+
+decoherence (pad amplitude kroz vrijeme)
+
+stabilizacija
+
+✔️ SearchEngine
+
+pretraga po amplitudi
+
+pretraga po energiji
+
+pretraga po vrijednosti
+
+kombinirani filteri
+
+rangiranje
+
+✔️ Vizualizacija
+
+statički graf (NetworkX)
+
+animirana oscilacija amplitude
+
+🔧 Storage layer
+
+WAL log (write-ahead logging)
+
+snapshot sistem
+
+hashiranje stanja
+
+Ovaj modul simulira osnovne principe baza podataka.
+
+🧩 Struktura projekta
+quantum_data_engine/
+│
+├── engine/
+│   ├── node.py
+│   ├── graph.py
+│   ├── quantum_ops.py
+│   └── stabilizer.py
+│
+├── storage/
+│   ├── wal.py
+│   ├── snapshot.py
+│   ├── search_engine.py
+│   └── indexer.py
+│
+├── visuals/
+│   └── visualizer.py
+│
+├── utils/
+│   └── hashing.py
+│
+├── main.py
+├── README.md
+└── requirements.txt
+
+📜 Licenca
+
+Projekt je objavljen pod MIT licencom, što znači da ga svako može koristiti, učiti iz njega i proširivati.
+
+📚 Cilj projekta
+
+Ovaj projekt služi kao:
+
+trening iz Python OOP arhitekture
+
+realistična simulacija grafova i dinamičkih sistema
+
+uvod u kvantne algoritme (na jednostavnom nivou)
+
+demonstracija rada baza podataka (WAL + snapshot)
+
+Idealno za junior developere, studente i sve koji žele pokazati kompleksniji Python rad u portfolio-u.
