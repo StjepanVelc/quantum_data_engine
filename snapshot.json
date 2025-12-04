@@ -1,0 +1,7 @@
+{
+    "graph_state": [
+        "<Node value=A, amp=0.48, energy=80.0>",
+        "<Node value=B, amp=0.48, energy=60.0>",
+        "<Node value=C, amp=0.48, energy=45.0>"
+    ]
+}

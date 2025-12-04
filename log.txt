@@ -1,0 +1,1 @@
+WRITE graph_state: ['Node(A, E=75, P=0.5)', 'Node(B, E=55, P=0.5)', 'Node(C, E=40, P=0.5)']
