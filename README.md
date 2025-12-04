@@ -1,99 +1,35 @@
-⚛ Quantum Data Engine
+# Quantum Data Engine v1.0
 
-A modular simulation engine for quantum-inspired data structures, graph networks, storage engines and animated visualization.
+Eksperimentalni Python engine koji kombinuje **kvantno-inspirirane simulacije**, **graf strukture**, **pretragu podataka**, **storage mehanizme** i **vizualizaciju** u jedinstven projekt.
 
-<p align="center"> <img src="preview.png" width="640"> </p>
-✨ Overview
+Projekt je razvijen kao napredna vježba iz OOP-a, graf teorije, algoritama, data-engine arhitekture i simulacije kvantnih fenomena.
 
-Quantum Data Engine is a Python framework that combines ideas from:
+---
 
-Quantum computing
+## 🚀 Features
 
-Graph networks
+### 🔮 Quantum Model
+- Amplitude & energija
+- Decoherence (raspad amplituda)
+- Superpozicija i collapse
+- Simulirano kvantno sprezanje (entanglement)
+- Stabilizator sistema (balansiranje amplituda)
 
-Database internals
+### 🕸 Graph Engine
+- Nodo (QuantumNode) sa energijom i amplitudom  
+- Dvosmjerne veze i pretraga po parametrima  
+- Kombinirani upiti  
+- Rangiranje čvorova po amplitude+energija metriki
 
-Simulation and visualization
+### 💾 Storage Engine
+- Snapshot JSON čuvanje stanja  
+- Write-Ahead Log (WAL) — kao u pravim bazama  
+- Shadow copy sistem  
+- Hashing integriteta (SHA-256)
 
-It is not a physics-accurate simulator — rather a conceptual engine showing how quantum-like behavior can be implemented in software.
+### 🎨 Vizualizacija
+- Statični prikaz grafa  
+- Animirana oscilacija amplituda  
+- Prikaz u boji (plasma colormap)
 
-🧩 Core Features
-⚛ Quantum Nodes
 
-amplitude (0–1)
-
-energy state
-
-links to other nodes
-
-entanglement pairs
-
-decoherence & stabilization
-
-🌐 Quantum Graph
-
-dynamic linking/unlinking
-
-global amplitude decay
-
-cleaning unstable nodes
-
-visual layout generation
-
-🔍 Search Engine
-
-filter by amplitude
-
-filter by energy
-
-filter by value
-
-combined multi-query filters
-
-ranking by stability score
-
-💾 Storage Engine
-
-Inspired by real databases (SQLite, PostgreSQL):
-
-Write-Ahead Log (WAL)
-
-Shadow copy
-
-Snapshots
-
-Automatic recovery
-
-🎨 Visualization
-
-static graph rendering
-
-animated amplitude drift
-
-color-mapped amplitudes
-
-energy-scaled node sizes
-
-🚀 Run Project
-python -m venv venv
-.\venv\Scripts\activate
-
-pip install -r requirements.txt
-python main.py
-
-📂 Project Structure
-engine/      # Quantum logic
-storage/     # WAL + snapshots + search
-utils/       # hashing, logger, errors
-visuals/     # plotting and animation
-main.py      # entry point
-
-🛠 Technologies
-
-Python 3.10+
-
-NetworkX
-
-matplotlib
-
-numpy
