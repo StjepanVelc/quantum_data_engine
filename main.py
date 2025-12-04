@@ -66,7 +66,7 @@ print("X collapsed to:", result)
 print("X amplitude:", x.amplitude)
 print("Y amplitude:", y.amplitude)  # mora pratiti X
 
-# Ako želiš vizualizovati i njih — dodamo ih u graf:
+# Vizualizacija i dodavanje u graf:
 g.add_node(x)
 g.add_node(y)
 g.connect(x, y)
