@@ -19,6 +19,9 @@ class QuantumNode:
         self.links = []
         self.entangled_with = set()
 
+        # --- NEW: označava da li čvor predstavlja realni qubit ---
+        self.is_qubit = False
+
     # --- graf funkcije ---
 
     def link(self, other):
