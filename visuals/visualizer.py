@@ -180,8 +180,8 @@ def animate_graph(graph):
         # Node drifting
         for i, n in enumerate(G.nodes):
             (x, y) = pos[n]
-            dx = 0.02 * math.sin(t + 0.3 * i)
-            dy = 0.02 * math.cos(t + 0.5 * i)
+            dx = 0.008 * math.sin(t + 0.3 * i)
+            dy = 0.008 * math.cos(t + 0.5 * i)
             drifted[n] = (x + dx, y + dy)
 
         node_patch.set_offsets([drifted[n] for n in G.nodes])
@@ -203,18 +203,22 @@ def animate_graph(graph):
         frame_data = graph.simulation.history[-1]
 
         # Update Bloch spheres
-        for node, ax in zip(qubits, bloch_axes):
-            draw_bloch_sphere(ax)
-            rho = frame_data["rho_qubits"][node.qubit_index]
-            bloch = bloch_vector(rho)
-            draw_bloch_vector(ax, bloch)
+        if frame % 5 == 0:  # svaka 5 frameova
+            for node, ax in zip(qubits, bloch_axes):
+                draw_bloch_sphere(ax)
+                rho = frame_data["rho_qubits"][node.qubit_index]
+                bloch = bloch_vector(rho)
+                draw_bloch_vector(ax, bloch)
 
         # Update heatmap
-        heat_img.set_data(get_interference(graph.simulation))
+        if frame % 10 == 0:
+            heat_img.set_data(get_interference(graph.simulation))
 
         # Sidebar info
-        ax_sidebar.clear()
-        ax_sidebar.axis("off")
+        if frame % 15 == 0:
+            ax_sidebar.clear()
+            ax_sidebar.axis("off")
+            ax_sidebar.text(0.0, 1.0, txt, color="white", va="top")
 
         txt = "QUANTUM STATE\n\n"
         for node in qubits:

@@ -90,11 +90,17 @@ H = Hamiltonian6Q(J=1.0, h=0.7)
 
 sim = Simulation6Q(reg, H, dt=0.1)
 
-# vizualizator očekuje ovo!
+# vizualizator
 g.simulation = sim
+
 
 # =========================================================
 # 5) Visualization
 # =========================================================
-print("Launching visualization…")
-animate_graph(g)
+def run_qde():
+    print("\nQuantum Data Engine — 6Q MODE\n")
+    animate_graph(g)
+
+
+if __name__ == "__main__":
+    run_qde()  # launch_qde.py
