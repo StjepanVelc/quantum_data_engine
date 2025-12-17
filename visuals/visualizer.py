@@ -95,13 +95,5 @@ def animate_graph(graph):
         blit=False,
     )
 
-    # --- FORCE proper fullscreen on Windows ---
-    mng = plt.get_current_fig_manager()
-    mng.window.state("zoomed")
-
-    # ovo forsira da matplotlib ponovno izračuna layout
-    plt.pause(0.1)
-    mng.window.state("zoomed")
-
     plt.show()
     return _anim
