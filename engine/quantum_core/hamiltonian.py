@@ -1,9 +1,10 @@
+from networkx import omega
 import numpy as np
 
 
 class Hamiltonian6Q:
     """
-    Ising Hamiltonian za 6 qubita u linearnom lancu.
+    Using Hamiltonian za 6 qubita u linearnom lancu.
     H = J Σ σ_z(i) σ_z(i+1) + h Σ σ_x(i)
     """
 
@@ -49,3 +50,15 @@ class Hamiltonian6Q:
             H += self.h * self.kron_n(ops)
 
         return H
+
+    def drive_term(self, t, omega=0.4):
+        """
+        Time-dependent drive on qubit 0
+        """
+        amp = omega * np.sin(t)
+
+        ops = []
+        for i in range(self.num_qubits):
+            ops.append(self.X if i == 0 else self.I)
+
+        return amp * self.kron_n(ops)

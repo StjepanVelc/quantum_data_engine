@@ -11,6 +11,7 @@ from engine.quantum_core.quantum_register import QuantumRegister
 from engine.quantum_core.hamiltonian import Hamiltonian6Q
 from engine.quantum_core.simulation import Simulation6Q
 from engine.quantum_core import quantum_gates as G
+from experiment.config import ExperimentConfig
 
 print("\nQuantum Data Engine — 6Q MODE\n")
 
@@ -84,14 +85,24 @@ reg.apply_gate(G.T, 0)
 print("Quantum gates applied.")
 
 # =========================================================
+# 3.5) EXPERIMENT CONFIG
+# =========================================================
+config = ExperimentConfig(drive=True, entangle=True, noise=False)
+
+# =========================================================
 # 4) Hamiltonian + Simulation
 # =========================================================
 H = Hamiltonian6Q(J=1.0, h=0.7)
 
 sim = Simulation6Q(reg, H, dt=0.1)
-
+sim.graph = g
 # vizualizator
 g.simulation = sim
+
+# entangle qubit 0 and 1
+reg.apply_controlled(0, 1, G.X)
+
+print("Simulation initialized.")
 
 
 # =========================================================

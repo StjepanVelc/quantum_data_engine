@@ -30,4 +30,6 @@ def U3(theta, phi, lam):
 
 # CNOT kao specijalan slučaj
 def CNOT():
-    return X
+    CNOT = np.array(
+        [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 0, 1], [0, 0, 1, 0]], dtype=complex
+    )

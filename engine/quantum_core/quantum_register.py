@@ -14,6 +14,10 @@ class QuantumRegister:
         psi = np.random.randn(self.dim) + 1j * np.random.randn(self.dim)
         self.state = psi / np.linalg.norm(psi)
 
+    @property
+    def n(self):
+        return self.num_qubits
+
     # --------------------------------------------------------
     # STANJE
     # --------------------------------------------------------

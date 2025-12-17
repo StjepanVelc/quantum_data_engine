@@ -1,60 +1,56 @@
 import numpy as np
-from engine.quantum_core.state_tools import custom_expm
+from engine.quantum_core.state_tools import custom_expm, partial_trace_single
+from engine.quantum_core.quantum_gates import X
+from engine.quantum_core.quantum_gates import U3
+from engine.quantum_core.state_tools import von_neumann_entropy
 
 
 class Simulation6Q:
-
     def __init__(self, register, hamiltonian, dt=0.1):
         self.reg = register
-        self.H = hamiltonian.matrix
-        self.dt = dt
+        self.register = register
 
+        self.hamiltonian = hamiltonian
+        self.H = hamiltonian.matrix
+
+        self.dt = dt
+        self.step_count = 0
         self.state = register.state.astype(complex)
         self.history = []
-        self.num_qubits = 6
-
+        self.num_qubits = register.num_qubits
         self._record_state()
 
-    # ---------------------------------------------------
+        self.register = register
+
+    # --------------------------------------------------
     def step(self):
-        U = custom_expm(-1j * self.H * self.dt)
+        self.step_count += 1
+        t = self.step_count * self.dt
+
+        # total Hamiltonian = static + drive
+        H_total = self.H + self.hamiltonian.drive_term(t)
+
+        U = custom_expm(-1j * H_total * self.dt)
+
         self.state = U @ self.state
-        self.state = self.state / np.linalg.norm(self.state)
+        self.state /= np.linalg.norm(self.state)
+
+        self.reg.set_state(self.state)
         self._record_state()
 
-    # ---------------------------------------------------
+    # --------------------------------------------------
     def _record_state(self):
+        rho_qubits = [partial_trace_single(self.state, q) for q in range(6)]
 
-        psi = self.state.reshape((64, 1))
-        rho_full = psi @ psi.conj().T
+        entropy = [von_neumann_entropy(rho) for rho in rho_qubits]
 
-        rho_qubits = []
-        for q in range(6):
-            rho_q = self._partial_trace(rho_full, q)
-            rho_qubits.append(rho_q)
+        # opcionalno: izloži trenutno stanje registra (za C# / UI)
+        self.reg.entropies = entropy
 
         self.history.append(
             {
                 "state": self.state.copy(),
-                "rho_full": rho_full,
                 "rho_qubits": rho_qubits,
+                "entropy": entropy,
             }
         )
-
-    # ---------------------------------------------------
-    def _partial_trace(self, rho, target):
-        """Tačan partial trace 64×64 → 2×2."""
-        rho_out = np.zeros((2, 2), dtype=complex)
-
-        for i in range(64):
-            for j in range(64):
-
-                bi = (i >> target) & 1
-                bj = (j >> target) & 1
-
-                if bi == bj:
-                    rho_out[bi, bj] += rho[i, j]
-                else:
-                    rho_out[bi, bj] += rho[i, j]
-
-        return rho_out
